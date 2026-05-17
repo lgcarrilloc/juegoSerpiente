@@ -2,142 +2,153 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Courier New", monospace;
 }
 
+/* 🖤 Fondo */
 body {
     min-height: 100vh;
-    background: #001679; /* ✅ nuevo fondo */
-    color: #e2e8f0;
+    background: #000;
+    color: #00ff00;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 12px;
 }
 
-
+/* 📦 Contenedor adaptable */
 .contenedor-juego {
-    background: #020617;
-    border: 4px solid #b8d400;
-    border-radius: 20px;
-    padding: 24px;
-    box-shadow: 0 0 20px rgba(184, 212, 0, 0.4);
+    width: 100%;
+    max-width: 650px;
+    background: #000000;
+    border: 3px solid #00ff00;
+    padding: 16px;
+    text-align: center;
 }
 
-
+/* 🎮 Título */
 h1 {
-    margin-bottom: 10px;
-    font-size: 32px;
-    color: #b8d400;
+    font-size: clamp(18px, 4vw, 26px);
+    margin-bottom: 8px;
 }
 
+/* 📄 Texto */
 .descripcion {
-    margin-bottom: 18px;
-    color: #cbd5e1;
-    line-height: 1.5;
+    font-size: clamp(12px, 3vw, 16px);
+    margin-bottom: 12px;
 }
 
+/* 📊 Panel adaptable */
 .panel-info {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 8px;
+    margin-bottom: 12px;
 }
 
 .tarjeta-info {
-    flex: 1;
-    min-width: 150px;
-    background: #001679;
-    padding: 14px;
-    border-radius: 14px;
-    border: 2px solid #b8d400;
-}
-
-.tarjeta-info span {
-    display: block;
-    font-size: 14px;
-    color: #94a3b8;
-    margin-bottom: 4px;
+    border: 2px solid #00ff00;
+    padding: 8px;
 }
 
 .tarjeta-info strong {
-    font-size: 24px;
-    color: #b8d400;
+    font-size: clamp(16px, 4vw, 20px);
 }
 
+/* 🧱 Canvas fluido */
 canvas {
     width: 100%;
-    max-width: 600px;
-    background: #001679;
-    border: 4px solid #b8d400;
-    border-radius: 16px;
+    aspect-ratio: 1 / 1; /* ✅ mantiene cuadrado */
+    max-width: 450px;
+    background: #64613a;
+    border: 3px solid #00ff00;
     display: block;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 16px auto;
+    image-rendering: pixelated;
 }
 
+/* 🎮 Controles */
 .controles {
     display: grid;
-    grid-template-columns: repeat(3, 90px);
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 18px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    max-width: 220px;
+    margin: 0 auto 12px auto;
 }
 
+/* 🔘 Botones */
 .controles button,
 .acciones button {
-    border: none;
-    border-radius: 12px;
-    padding: 12px 16px;
-    background: #d9ff00;
-    color: #052e16;
-    font-weight: bold;
+    border: 2px solid #00ff00;
+    padding: 10px;
+    background: #000;
+    color: #00ff00;
+    font-size: clamp(12px, 3vw, 16px);
     cursor: pointer;
-    transition: 0.2s;
 }
 
-.controles button:hover,
-.acciones button:hover {
-    transform: scale(1.05);
-    background: #d9ff00;
+/* Hover solo en pantallas grandes */
+@media (hover: hover) {
+    .controles button:hover,
+    .acciones button:hover {
+        background: #00ff00;
+        color: #000;
+    }
 }
 
+/* 📦 Acciones */
+.acciones {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.acciones button {
+    flex: 1 1 120px;
+}
+
+/* 📢 Mensaje */
+.mensaje {
+    margin-top: 10px;
+    font-size: clamp(12px, 3vw, 16px);
+}
+
+/* ❌ Vacío */
 .vacio {
     visibility: hidden;
 }
 
-.acciones {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
+/* 📱 EXTRA: móviles pequeños */
+@media (max-width: 400px) {
 
-.acciones .secundario {
-    background: #38bdf8;
-    color: #001679;
-}
-
-
-.mensaje {
-    margin-top: 14px;
-    color: #b8d400;
-    min-height: 24px;
-    font-weight: bold;
-}
-
-@media (max-width: 520px) {
-    h1 {
-        font-size: 24px;
+    .contenedor-juego {
+        padding: 12px;
     }
 
     .controles {
-        grid-template-columns: repeat(3, 75px);
+        max-width: 180px;
     }
 
-    .controles button,
-    .acciones button {
-        padding: 10px;
+    canvas {
+        max-width: 100%;
+    }
+}
+
+/* 📲 Tablets */
+@media (min-width: 768px) {
+    .contenedor-juego {
+        padding: 20px;
+    }
+}
+
+/* 💻 Escritorio */
+@media (min-width: 1024px) {
+    .contenedor-juego {
+        max-width: 700px;
+    }
+
+    canvas {
+        max-width: 500px;
     }
 }
