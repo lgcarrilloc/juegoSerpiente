@@ -19,6 +19,9 @@ function dibujarTodo() {
   pintarComida();
 
 }
+function saludar() {
+  alert("Hola, bienvenido al juego de la serpiente!");
+}
 
 function limpiarCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
